@@ -47,6 +47,17 @@ input:focus {
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
+.album-card img {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+}
+
+
 
 @media (max-width: 600px) {
   button {

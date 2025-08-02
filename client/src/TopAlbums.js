@@ -2,9 +2,12 @@ import './TopAlbums.css';
 import React from 'react';
 
 function TopAlbums({ albums }) {
+  // Ordena os álbuns em ordem decrescente pela nota
+  const sortedAlbums = [...albums].sort((a, b) => b.rating - a.rating);
+
   return (
     <section className="album-list">
-      {albums.map(album => (
+      {sortedAlbums.map(album => (
         <div className="album-card" key={album.id}>
           <img src={album.coverUrl} alt={`Capa do álbum ${album.name}`} />
           <h3>{album.name}</h3>
@@ -19,7 +22,5 @@ function TopAlbums({ albums }) {
     </section>
   );
 }
-
-
 
 export default TopAlbums;

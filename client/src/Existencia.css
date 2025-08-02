@@ -1,0 +1,76 @@
+.existencia {
+  position: fixed; /* fixa no topo direito */
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  max-height: calc(100vh - 40px); /* para evitar ultrapassar a tela */
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #dcdcdc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.exist-card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #bbb;
+  transition: transform 0.2s ease;
+}
+
+.exist-card:hover {
+  transform: scale(1.02);
+}
+
+.exist-card h3 {
+  margin: 0;
+  font-size: 17px;
+  color: #333;
+}
+
+.exist-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.exist-card ul {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+.exist-card li {
+  font-size: 13px;
+  color: #444;
+}
+
+/* Responsivo: empurra a seção para dentro em telas menores */
+@media screen and (max-width: 768px) {
+  .existencia {
+    position: static;
+    width: 100%;
+    max-height: none;
+    padding: 16px;
+    margin: 20px auto;
+    box-shadow: none;
+    border: none;
+  }
+
+  .exist-card {
+    border-left: 4px solid #aaa;
+    border-radius: 8px;
+  }
+}
+
+/* Ajuste no layout principal para não sobrepor álbuns */
+.album-list {
+  margin-right: 360px; /* dá espaço para a existência não ser encoberta */
+}
