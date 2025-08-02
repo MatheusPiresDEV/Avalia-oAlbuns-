@@ -1,9 +1,9 @@
 .existencia {
-  position: fixed; /* fixa no topo direito */
+  position: fixed;
   top: 20px;
   right: 20px;
   width: 320px;
-  max-height: calc(100vh - 40px); /* para evitar ultrapassar a tela */
+  max-height: calc(100vh - 40px);
   overflow-y: auto;
   background-color: #f9f9f9;
   padding: 20px;
@@ -17,6 +17,7 @@
   box-sizing: border-box;
 }
 
+/* Cartões */
 .exist-card {
   background-color: white;
   padding: 16px;
@@ -32,13 +33,13 @@
 
 .exist-card h3 {
   margin: 0;
-  font-size: 17px;
+  font-size: 1rem;
   color: #333;
 }
 
 .exist-card p {
   margin: 4px 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #555;
 }
 
@@ -48,11 +49,11 @@
 }
 
 .exist-card li {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: #444;
 }
 
-/* Responsivo: empurra a seção para dentro em telas menores */
+/* 📱 Responsivo para celulares */
 @media screen and (max-width: 768px) {
   .existencia {
     position: static;
@@ -65,12 +66,24 @@
   }
 
   .exist-card {
+    padding: 14px;
     border-left: 4px solid #aaa;
     border-radius: 8px;
   }
-}
 
-/* Ajuste no layout principal para não sobrepor álbuns */
-.album-list {
-  margin-right: 360px; /* dá espaço para a existência não ser encoberta */
+  .exist-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .exist-card p,
+  .exist-card li {
+    font-size: 0.75rem;
+  }
+
+  /* Removendo margem lateral dos álbuns pra não esconder conteúdo */
+  .album-list {
+    margin-right: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }

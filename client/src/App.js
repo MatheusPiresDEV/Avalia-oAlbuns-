@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import Galaxy from './Galaxy';
 import TopAlbums from './TopAlbums';
 import { sampleAlbums } from './Api';
 import LoginForm from './LoginForm';
 import AlbumWizard from './AlbumWizard';
-import Existencia from './EXistencia'; // ✅ Corrigido aqui!
+import Existencia from './EXistencia';
 import './App.css';
 
 function App() {
@@ -15,25 +16,55 @@ function App() {
   };
 
   const handleAddAlbum = (newAlbum) => {
-    const nextId = albums.length > 0 ? Math.max(...albums.map(album => album.id)) + 1 : 1;
+    const nextId = albums.length > 0
+      ? Math.max(...albums.map(album => album.id)) + 1
+      : 1;
+
+    const rating = parseFloat(
+      (
+        newAlbum.trackRatings.reduce((acc, score) => acc + score, 0) /
+        newAlbum.trackRatings.length
+      ).toFixed(2)
+    );
+
     setAlbums([
       ...albums,
       {
         ...newAlbum,
         id: nextId,
         createdAt: new Date(),
-        rating: parseFloat(
-          (newAlbum.trackRatings.reduce((acc, score) => acc + score, 0) / newAlbum.trackRatings.length).toFixed(2)
-        ),
+        rating,
       },
     ]);
   };
 
   return (
-    <main className="App">
+    <div className="App" style={{ position: 'relative', zIndex: 1 }}>
+      {/* Fundo galáctico */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1,
+        }}
+      >
+        <Galaxy
+          mouseRepulsion={true}
+          mouseInteraction={true}
+          density={1.5}
+          glowIntensity={0.2}      // menos brilho exagerado
+          hueShift={0}             // tonalidade neutra
+          saturation={0.0}         // sem cor — estrelas brancas
+          transparent={false}      // fundo totalmente preto
+        />
+
+      </div>
+
+      {/* Conteúdo principal */}
       <TopAlbums albums={albums} />
-      
-      {/* ✅ Adiciona o painel Existência visivelmente */}
       <Existencia />
 
       <section className="add-section">
@@ -44,7 +75,7 @@ function App() {
           <AlbumWizard onComplete={handleAddAlbum} />
         )}
       </section>
-    </main>
+    </div>
   );
 }
 

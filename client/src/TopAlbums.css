@@ -1,23 +1,28 @@
 .album-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 16px;
-  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  justify-content: flex-start;     /* 🔥 começa da esquerda no desktop */
+  align-items: stretch;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
+/* Cada card de álbum */
 .album-item {
-  flex: 1 1 240px;
+  flex: 1 1 260px;
   max-width: 280px;
+  min-width: 240px;
+  background-color: #fff;
   border: 2px solid #ddd;
   border-radius: 14px;
   padding: 16px;
-  background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .album-item:hover {
@@ -25,40 +30,108 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+/* Capa */
 .album-cover {
-  width: 100%;
-  height: 160px;
-  object-fit: contain;   /* exibe a imagem inteira ajustando ao espaço */
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
   background-color: #f0f0f0;
+  margin: 0 auto 12px auto; /* 🔥 centraliza horizontalmente */
+  display: block;
 }
 
 
 
+/* Informações */
+.album-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
 .album-title {
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 4px;
-  text-align: center;
+  margin-bottom: 6px;
 }
 
 .album-band {
-  font-size: 14px;
-  color: #666;
+  font-size: 0.95rem;
+  color: #555;
   margin-bottom: 4px;
 }
 
 .album-year {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 4px;
 }
 
-/* Responsivo */
+.album-title,
+.album-band,
+.album-year,
+.album-info,
+.album-item p,
+.album-item h3,
+.album-item span,
+.album-item li {
+  color: #000; /* texto preto */
+}
+.album-item h4,
+.album-item small,
+.album-item strong {
+  color: #000;
+}
+
+
+/* 🧠 Tablet */
 @media screen and (max-width: 768px) {
   .album-item {
-    flex: 1 1 100%;
-    max-width: 100%;
+    flex: 1 1 45%;
+  }
+
+  .album-title {
+    font-size: 1.05rem;
+  }
+
+  .album-band,
+  .album-year {
+    font-size: 0.85rem;
+  }
+}
+
+/* 📱 Celular */
+@media screen and (max-width: 480px) {
+  .album-cover {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 12px auto; /* 🔥 centraliza horizontalmente */
+    display: block;
+  }
+
+  .album-item {
+    align-items: center;
+    text-align: center;
+  }
+
+  .album-title,
+  .album-band,
+  .album-year {
+    text-align: center;
+  }
+
+  .album-cover {
+    max-height: 140px;
+  }
+
+  .album-title {
+    font-size: 1rem;
+  }
+
+  .album-band,
+  .album-year {
+    font-size: 0.8rem;
   }
 }
