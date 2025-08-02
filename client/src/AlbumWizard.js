@@ -58,12 +58,11 @@ function AlbumWizard({ onComplete }) {
       alert('Adicione pelo menos uma faixa antes de finalizar.');
       return;
     }
-    setAskFavorite(true); // Mostra campo para faixa favorita
+    setAskFavorite(true);
   };
 
   const confirmFavoriteTrack = () => {
     const index = parseInt(favoriteIndex) - 1;
-
     if (isNaN(index) || index < 0 || index >= albumData.tracks.length) {
       alert(`Digite um número entre 1 e ${albumData.tracks.length}`);
       return;
@@ -101,6 +100,7 @@ function AlbumWizard({ onComplete }) {
 
   return (
     <div className="wizard-container">
+      {/* Nome do álbum */}
       {step === 1 && (
         <>
           <label>Nome do álbum:</label>
@@ -108,12 +108,14 @@ function AlbumWizard({ onComplete }) {
             type="text"
             value={albumData.name}
             onChange={e => handleChange('name', e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleNext()}
             required
           />
           <button onClick={handleNext}>Validar Nome</button>
         </>
       )}
 
+      {/* Nome da banda */}
       {step === 2 && (
         <>
           <label>Nome da banda:</label>
@@ -121,12 +123,14 @@ function AlbumWizard({ onComplete }) {
             type="text"
             value={albumData.band}
             onChange={e => handleChange('band', e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleNext()}
             required
           />
           <button onClick={handleNext}>Validar Banda</button>
         </>
       )}
 
+      {/* Ano de lançamento */}
       {step === 3 && (
         <>
           <label>Ano de lançamento:</label>
@@ -134,6 +138,7 @@ function AlbumWizard({ onComplete }) {
             type="number"
             value={albumData.releaseYear}
             onChange={e => handleChange('releaseYear', e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleNext()}
             placeholder="Ex: 2020"
             required
           />
@@ -141,6 +146,7 @@ function AlbumWizard({ onComplete }) {
         </>
       )}
 
+      {/* URL da capa */}
       {step === 4 && (
         <>
           <label>URL da capa (opcional):</label>
@@ -148,11 +154,13 @@ function AlbumWizard({ onComplete }) {
             type="text"
             value={albumData.coverUrl}
             onChange={e => handleChange('coverUrl', e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleNext()}
           />
           <button onClick={handleNext}>Avançar para avaliação</button>
         </>
       )}
 
+      {/* Avaliação das faixas */}
       {step >= 5 && !askFavorite && (
         <>
           <label>Avaliação da faixa {albumData.tracks.length + 1}:</label>
@@ -161,6 +169,7 @@ function AlbumWizard({ onComplete }) {
             placeholder="Ex: foda, boa, funk..."
             value={currentRating}
             onChange={e => setCurrentRating(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && addTrack()}
           />
           <button onClick={addTrack}>Adicionar faixa</button>
 
@@ -179,6 +188,7 @@ function AlbumWizard({ onComplete }) {
         </>
       )}
 
+      {/* Faixa favorita */}
       {askFavorite && (
         <>
           <label>Digite o número da faixa favorita (1 até {albumData.tracks.length}):</label>
@@ -188,6 +198,7 @@ function AlbumWizard({ onComplete }) {
             max={albumData.tracks.length}
             value={favoriteIndex}
             onChange={e => setFavoriteIndex(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && confirmFavoriteTrack()}
           />
           <button onClick={confirmFavoriteTrack}>Confirmar faixa favorita</button>
         </>

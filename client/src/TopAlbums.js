@@ -8,15 +8,21 @@ function TopAlbums({ albums }) {
   return (
     <section className="album-list">
       {sortedAlbums.map(album => (
-        <div className="album-card" key={album.id}>
-          <img src={album.coverUrl} alt={`Capa do álbum ${album.name}`} />
-          <h3>{album.name}</h3>
-          <p><strong>Banda:</strong> {album.band}</p>
-          <p><strong>Lançado em:</strong> {album.releaseYear}</p>
-          <p><strong>Concluído em:</strong> {new Date(album.createdAt).toLocaleString()}</p>
-          <p><strong>Faixa favorita:</strong> {album.favoriteTrack}</p>
-          <p><strong>Nota percentual:</strong> {album.rating}%</p>
-          <p><strong>Notas por faixa:</strong> {album.trackRatings.join(', ')}</p>
+        <div className="album-item" key={album.id}>
+          <img
+            src={album.coverUrl}
+            alt={`Capa do álbum ${album.name}`}
+            className="album-cover"
+          />
+          <div className="album-title">{album.name}</div>
+          <div className="album-band">{album.band}</div>
+          <div className="album-year">Lançado em {album.releaseYear}</div>
+          <div className="album-details">
+            <p><strong>Concluído em:</strong> {new Date(album.createdAt).toLocaleString()}</p>
+            <p><strong>Faixa favorita:</strong> {album.favoriteTrack}</p>
+            <p><strong>Nota percentual:</strong> {album.rating}%</p>
+            <p><strong>Notas por faixa:</strong> {album.trackRatings.join(', ')}</p>
+          </div>
         </div>
       ))}
     </section>

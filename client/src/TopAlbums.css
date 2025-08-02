@@ -1,49 +1,64 @@
 .album-list {
   display: flex;
-  flex-direction: row;      /* garante que seja horizontal */
-  flex-wrap: nowrap;        /* evita quebra de linha */
-  overflow-x: auto;
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-  gap: 12px;
-  scroll-snap-type: x mandatory;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px;
+  justify-content: center;
 }
 
 .album-item {
-  flex: 0 0 auto;
-  width: 180px;
-  scroll-snap-align: start;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 8px;
-  background-color: #f9f9f9;
-  text-align: center;
+  flex: 1 1 240px;
+  max-width: 280px;
+  border: 2px solid #ddd;
+  border-radius: 14px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .album-cover {
   width: 100%;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
+  height: 160px;
+  object-fit: contain;   /* exibe a imagem inteira ajustando ao espaço */
+  background-color: #f0f0f0;
 }
 
-.album-item {
-  flex: 0 0 auto;
-  width: 180px;
-  scroll-snap-align: start;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 8px;
-  background-color: #f9f9f9;
+
+
+
+.album-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  cursor: pointer;
 }
 
-.album-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+.album-band {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
 }
 
+.album-year {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+  .album-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
