@@ -1,51 +1,57 @@
+/* Wrapper principal */
+#top-wrapper {
+  padding: 60px 24px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Container com coluna esquerda (conteúdo) e painel à direita */
+.main-columns {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Conteúdo de álbuns */
+.left-content {
+  width: 100%;
+}
+
+/* Painel vertical */
 .existencia {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 320px;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
   background-color: #f9f9f9;
-  padding: 20px;
   border: 2px solid #dcdcdc;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
   box-sizing: border-box;
 }
 
-/* Cartões */
+/* Cartão interno */
 .exist-card {
   background-color: white;
   padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #bbb;
-  transition: transform 0.2s ease;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
-.exist-card:hover {
-  transform: scale(1.02);
-}
-
+/* Texto interno */
 .exist-card h3 {
-  margin: 0;
   font-size: 1rem;
   color: #333;
+  margin-bottom: 8px;
 }
 
 .exist-card p {
-  margin: 4px 0;
   font-size: 0.875rem;
   color: #555;
 }
 
 .exist-card ul {
-  padding-left: 18px;
-  margin: 6px 0;
+  padding-left: 20px;
+  margin-top: 8px;
 }
 
 .exist-card li {
@@ -53,37 +59,13 @@
   color: #444;
 }
 
-/* 📱 Responsivo para celulares */
+/* 📱 Responsivo: empilha verticalmente em mobile */
 @media screen and (max-width: 768px) {
+  .main-columns {
+    grid-template-columns: 1fr;
+  }
+
   .existencia {
-    position: static;
-    width: 100%;
-    max-height: none;
-    padding: 16px;
-    margin: 20px auto;
-    box-shadow: none;
-    border: none;
-  }
-
-  .exist-card {
-    padding: 14px;
-    border-left: 4px solid #aaa;
-    border-radius: 8px;
-  }
-
-  .exist-card h3 {
-    font-size: 0.95rem;
-  }
-
-  .exist-card p,
-  .exist-card li {
-    font-size: 0.75rem;
-  }
-
-  /* Removendo margem lateral dos álbuns pra não esconder conteúdo */
-  .album-list {
-    margin-right: 0;
-    padding-left: 12px;
-    padding-right: 12px;
+    margin-top: 32px;
   }
 }

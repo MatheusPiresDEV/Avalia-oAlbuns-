@@ -5,26 +5,70 @@
   box-sizing: border-box;
 }
 
-html {
+/* Remove estilos padrões e melhora legibilidade */
+html, body {
   font-size: 100%;
   scroll-behavior: smooth;
-}
-
-body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: #000; /* fundo preto */
-  color: #fff;            /* texto branco */
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #000;
+  color: #fff;
   line-height: 1.6;
   min-height: 100vh;
   padding: 16px;
 }
 
+/* === Tipografia básica === */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.6em;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #81C784;
+}
+
+/* === Listas === */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.4em;
+}
+
+/* === Tabelas === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+thead {
+  background-color: #222;
+}
+
 /* === Código === */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   font-size: 0.95em;
   background-color: #111;
   color: #fff;
@@ -33,6 +77,14 @@ code {
   display: inline-block;
   max-width: 100%;
   overflow-x: auto;
+}
+
+/* === Imagens === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
 }
 
 /* === Responsividade Tipográfica === */
@@ -50,6 +102,10 @@ code {
   body {
     padding: 12px;
   }
+
+  table {
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -63,5 +119,21 @@ code {
 
   code {
     font-size: 0.85em;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  table, th, td {
+    font-size: 0.85rem;
   }
 }

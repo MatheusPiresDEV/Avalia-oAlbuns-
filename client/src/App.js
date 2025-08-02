@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App" style={{ position: 'relative', zIndex: 1 }}>
-      {/* Fundo galáctico */}
+      {/* 🌌 Fundo Galáctico */}
       <div
         style={{
           position: 'fixed',
@@ -55,25 +55,81 @@ function App() {
           mouseRepulsion={true}
           mouseInteraction={true}
           density={1.5}
-          glowIntensity={0.2}      // menos brilho exagerado
-          hueShift={0}             // tonalidade neutra
-          saturation={0.0}         // sem cor — estrelas brancas
-          transparent={false}      // fundo totalmente preto
+          glowIntensity={0.2}
+          hueShift={0}
+          saturation={0.0}
+          transparent={false}
         />
-
       </div>
 
-      {/* Conteúdo principal */}
-      <TopAlbums albums={albums} />
-      <Existencia />
+      {/* 🧭 Cabeçalho */}
+      <header className="site-header">
+        <div className="nav-container">
+          <div className="logo">🎵 Meu Catálogo</div>
+          <input type="checkbox" id="menu-toggle" />
+          <label htmlFor="menu-toggle" className="emoji-menu">☰</label>
+          <nav className="nav-items">
+            <a href="#top-wrapper">Álbuns</a>
+            <a href="#add-album">Adicionar</a>
+            <a href="#edit-album">Editar</a>
+            <a href="#rank">Rank</a>
+            <a href="#rank-simplificado">Rank Simplificado</a>
+            <a href="#observacoes">Observações</a>
+            <a href="#historico">Histórico</a>
+            <a href="#etc">Etc</a>
+          </nav>
+        </div>
+      </header>
 
-      <section className="add-section">
+      {/* 🎧 Seção dos álbuns com painel à direita */}
+      <section id="top-wrapper">
+        <div className="main-columns">
+          <div className="left-content">
+            <TopAlbums albums={albums} />
+          </div>
+
+          <Existencia totalAlbums={albums.length} />
+        </div>
+      </section>
+
+      {/* 🎛️ Demais seções */}
+      <section id="add-album" className="add-section">
         <h2>Adicionar novo álbum</h2>
         {!isAuthenticated ? (
           <LoginForm onLogin={handleLogin} />
         ) : (
           <AlbumWizard onComplete={handleAddAlbum} />
         )}
+      </section>
+
+      <section id="edit-album">
+        <h2>Editar álbum</h2>
+        <p>Função de edição será implementada aqui.</p>
+      </section>
+
+      <section id="rank">
+        <h2>Ranking Geral</h2>
+        <p>Aqui ficará o ranking baseado nas notas dos álbuns.</p>
+      </section>
+
+      <section id="rank-simplificado">
+        <h2>Rank Simplificado</h2>
+        <p>Exibição rápida e resumida dos melhores álbuns.</p>
+      </section>
+
+      <section id="observacoes">
+        <h2>Observações</h2>
+        <p>Anotações e detalhes adicionais sobre os álbuns.</p>
+      </section>
+
+      <section id="historico">
+        <h2>Histórico</h2>
+        <p>Registro de alterações, adições e atualizações.</p>
+      </section>
+
+      <section id="etc">
+        <h2>Outros</h2>
+        <p>Espaço reservado para futuras funcionalidades.</p>
       </section>
     </div>
   );

@@ -1,3 +1,89 @@
+/* === CABEÇALHO FIXO === */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+  z-index: 1000;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* === MENU === */
+.nav-items {
+  display: flex;
+}
+
+.nav-items a {
+  margin-left: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-items a:hover {
+  color: #4CAF50;
+}
+
+/* === MENU EMOJI === */
+.emoji-menu {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Esconde checkbox original */
+#menu-toggle {
+  display: none;
+}
+
+/* === MOBILE RESPONSIVO === */
+@media (max-width: 600px) {
+  .logo, .nav-items {
+    display: none;
+  }
+
+  .emoji-menu {
+    display: block;
+  }
+
+  #menu-toggle:checked + .emoji-menu + .nav-items {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 16px;
+  }
+
+  .nav-items a {
+    margin: 10px 16px;
+  }
+}
+
 /* === BOTÕES === */
 button {
   background-color: #4CAF50;
@@ -23,7 +109,6 @@ button:active {
   transform: translateY(1px) scale(0.98);
 }
 
-/* RESPONSIVO - MOBILE */
 @media (max-width: 600px) {
   button {
     font-size: 0.9rem;
@@ -57,7 +142,6 @@ textarea:focus {
   transform: scale(1.01);
 }
 
-/* RESPONSIVO - MOBILE */
 @media (max-width: 600px) {
   input,
   textarea {
@@ -71,7 +155,7 @@ textarea:focus {
   width: 100%;
   max-width: 150px;
   height: auto;
-  aspect-ratio: 1 / 1; /* mantém formato quadrado */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
